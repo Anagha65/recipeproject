@@ -1,0 +1,109 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+    <div class="container">
+        <a class="navbar-brand" href="index.html"><span class="flaticon-pizza-1 mr-1"></span>Pizza<br><small>Delicious</small></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="oi oi-menu"></span> Menu
+        </button>
+        <div class="collapse navbar-collapse" id="ftco-nav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active"><a href="index.html" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="{% url 'create_recipe' %}" class="nav-link">Create</a></li>
+                <li class="nav-item"><a href="{% url 'index' %}" class="nav-link">index</a></li>
+                <form action="" class="d-flex" role="search" method="POST">
+                    {% csrf_token %}
+                    <input type="text" name="search" class="form-control" placeholder="search" aria-label="search">
+                    <button type="submit" class="btn btn-outline-success">Search</button>
+                </form>
+                <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
+                <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+                <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<section class="ftco-section ftco-services">
+    	<div class="overlay"></div>
+    	<div class="container">
+    		<div class="row justify-content-center mb-5 pb-3" style="background-color: orange">
+<div class="col-md-12 appointment ftco-animate">
+	    			<h3 class="mb-3">Create Recipes</h3>
+	    			<form method="post" action="{% url 'create_recipe' %}" class="appointment-form" enctype="multipart/form-data">
+	    				{% csrf_token %}
+						<div class="d-md-flex">
+
+		    				<div class="form-group">
+								<label for="">Name</label>
+		    					<input type="text" class="form-control" placeholder=" " name="Name">
+		    				</div>
+	    				</div>
+	    				<div class="d-me-flex">
+	    					<div class="form-group">
+								<label for="">Preparation time </label>
+		    					<input type="time" class="form-control" placeholder="Last Name" name="Prep_time">
+		    				</div>
+	    				</div>
+
+
+							<div class="d-me-flex">
+	    					<div class="form-group">
+								<label for=""> Difficulty </label>
+		    					<input type="number" class="form-control"   name="Difficulty">
+		    				</div>
+	    				</div>
+
+							<div class="d-me-flex">
+	    					<div class="form-group">
+								<label for=""> Is Vegetarian ? </label>
+		    					<input type="checkbox" class=" " placeholder="Last Name" name="Vegetarian">
+		    				</div>
+	    				</div>
+	    				 <label for="recipe_image">Recipe Image:</label><br>
+  <input type="file" id="recipe_image" name="Recip_img"><br><br>
+
+  <label for="description">Description:</label><br>
+  <textarea id="description" name="Descriptions" class="form-control"  rows="5" maxlength="5000"></textarea><br><br>
+	            <div class="form-group">
+	              <input type="submit" value="Send" class="btn btn-primary py-3 px-4">
+	            </div>
+	    			</form>
+
+<!--	<form method="POST" enctype="multipart/form-data">-->
+<!--    {% csrf_token %}-->
+<!--    <label for="name">Name:</label><br>-->
+<!--    <input type="text" id="name" name="Name" maxlength="200"><br><br>-->
+
+<!--    <label for="prep_time">Preparation Time (minutes):</label><br>-->
+<!--    <input type="number" id="prep_time" name="Prep_time" min="0" step="1" value="120"><br><br>-->
+
+<!--    <label for="difficulty">Difficulty:</label><br>-->
+<!--    <select id="difficulty" name="Difficulty">-->
+<!--        <option value="1">Easy</option>-->
+<!--        <option value="2">Medium</option>-->
+<!--        <option value="3">Hard</option>-->
+<!--    </select><br><br>-->
+
+<!--    <label for="vegetarian">Vegetarian:</label><br>-->
+<!--    <input type="checkbox" id="vegetarian" name="Vegetarian"><br><br>-->
+
+<!--    <label for="recipe_image">Recipe Image:</label><br>-->
+<!--    <input type="file" id="recipe_image" name="Recip_img"><br><br>-->
+
+<!--    <label for="description">Description:</label><br>-->
+<!--    <textarea id="description" name="Descriptions" rows="5" maxlength="5000"></textarea><br><br>-->
+
+<!--    <input type="submit" value="Submit">-->
+<!--</form>-->
+</div>
+				</div>
+			</div>
+	</div>
+	</section>
+
+{% endblock %}
+
